@@ -108,6 +108,14 @@ class QueryBuilder extends Builder
                     && array_key_exists('value',$received_filter)
                     && array_key_exists('op',$received_filter))
                 {
+                    if($received_filter['op'] == 'greater')
+                    {
+                        return Filter::gt($filter);
+                    }
+                    if($received_filter['op'] == 'less')
+                    {
+                        return Filter::lt($filter);
+                    }
                     if($received_filter['op'] == 'between')
                     {
                         return Filter::FiltersBetween($filter);
