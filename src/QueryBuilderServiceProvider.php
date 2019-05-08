@@ -67,6 +67,11 @@ class QueryBuilderServiceProvider extends ServiceProvider
             }
 
             $filters = collect($filters)->map(function ($filter) {
+
+                if (! isset($filter['value'])) {
+                    return null;
+                }
+
                 return [$filter["field"] => $filter["value"]];
             })->collapse();
 
