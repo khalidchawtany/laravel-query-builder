@@ -108,6 +108,10 @@ class QueryBuilder extends Builder
                     && array_key_exists('value',$received_filter)
                     && array_key_exists('op',$received_filter))
                 {
+                    if($received_filter['op'] == 'equal')
+                    {
+                        return Filter::exact($filter);
+                    }
                     if($received_filter['op'] == 'greater')
                     {
                         return Filter::gt($filter);
